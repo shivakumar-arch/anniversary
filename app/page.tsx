@@ -46,19 +46,19 @@ const pages = [
     highlight: "En anbaeeeee",
     text: "I Love You En anbaeeeee! 👑 Inimel vara pora ella years-um namaku happy-a irukum. I promise to treat you like a queen. 🏰💖"
   },
-  /* --- SWAPPED & UPDATED SECTION --- */
+  /* --- REVERTED PHOTO MAPPING (Sequential Order) --- */
   {
-    image: "/p10.jpg", // Moved Eyes to Page 9 (Last 3rd)
+    image: "/p9.jpg", // Set back to p9.jpg
     highlight: "En thozhiyeeeeee",
     text: "I Love You En thozhiyeeeeee! 👀 (Your Eyes) Un kannula paatha... edho amaidhi kidaikkudhu di. Talking to you heals everything. ✨😍"
   },
   {
-    image: "/p9.jpg", // Moved Weirdness to Page 10 (Last 2nd)
+    image: "/p10.jpg", // Set back to p10.jpg
     highlight: "Anbu manaiviyeee",
     text: "I Love You Anbu manaiviyeee! 🤪 (Your Weirdness) Un lollu, un kurumbu... ellame enakku pidikkum. You are my crazy little minion! 💖🥳"
   },
   {
-    image: "/p11.jpg", // Lips remains Page 11
+    image: "/p11.jpg", 
     highlight: "En kanaveeeeee",
     text: "I Love You En kanaveeeeee! 💋 (Your Lips) Un lips... paathale kiss panna thonudhu. The taste I crave every single day. Waiting to feel them. 🔥😘"
   }
