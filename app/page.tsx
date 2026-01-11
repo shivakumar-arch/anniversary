@@ -46,16 +46,15 @@ const pages = [
     highlight: "En anbaeeeee",
     text: "I Love You En anbaeeeee! 👑 Inimel vara pora ella years-um namaku happy-a irukum. I promise to treat you like a queen. 🏰💖"
   },
-  /* --- REVERTED PHOTO MAPPING (Sequential Order) --- */
   {
-    image: "/p9.jpg", // Set back to p9.jpg
+    image: "/p9.jpg", 
     highlight: "En thozhiyeeeeee",
-    text: "I Love You En thozhiyeeeeee! 👀 (Your Eyes) Un kannula paatha... edho amaidhi kidaikkudhu di. Talking to you heals everything. ✨😍"
+    text: "I Love You En thozhiyeeeeee! 👀 Your eyes speak a thousand words without saying anything. Avlo azhagu! ✨👀"
   },
   {
-    image: "/p10.jpg", // Set back to p10.jpg
+    image: "/p10.jpg", 
     highlight: "Anbu manaiviyeee",
-    text: "I Love You Anbu manaiviyeee! 🤪 (Your Weirdness) Un lollu, un kurumbu... ellame enakku pidikkum. You are my crazy little minion! 💖🥳"
+    text: "I Love You Anbu manaiviyeee! 🤪 (Your Weirdness) Unnoda antha lousu thanam, kurumbu ellam enakku romba pidikkum. You are my favorite entertainer di! 💖🥳"
   },
   {
     image: "/p11.jpg", 
@@ -115,9 +114,9 @@ export default function AnniversaryPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, scale: 1.5, filter: "blur(10px)" }}
             transition={{ duration: 0.5 }}
-            className="flex flex-col items-center justify-between h-full py-16 w-full max-w-md bg-gradient-to-b from-gray-900 to-black"
+            className="flex flex-col items-center justify-between h-full py-10 w-full max-w-md bg-gradient-to-b from-gray-900 to-black"
           >
-            <div className="flex flex-col items-center mt-12">
+            <div className="flex flex-col items-center mt-8">
               <div className="relative mb-6">
                 <motion.div
                   animate={{ scale: [1, 1.2, 1], opacity: [0.5, 0, 0.5] }}
@@ -131,7 +130,7 @@ export default function AnniversaryPage() {
               <p className="text-gray-500 text-sm mt-1 animate-pulse">Incoming video call...</p>
             </div>
             
-            <div className="flex w-full justify-around px-12 mb-16">
+            <div className="flex w-full justify-around px-12 mb-10">
               <div className="flex flex-col items-center gap-3">
                 <button 
                   onClick={handleDecline}
@@ -169,7 +168,7 @@ export default function AnniversaryPage() {
               ))}
             </div>
 
-            <div className="flex-1 w-full overflow-y-auto pb-40 px-4">
+            <div className="flex-1 w-full overflow-y-auto pb-32 px-4 flex flex-col justify-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={currentPage}
@@ -177,18 +176,18 @@ export default function AnniversaryPage() {
                   animate={{ x: 0, opacity: 1 }}
                   exit={{ x: -100, opacity: 0 }}
                   transition={{ duration: 0.3 }}
-                  className="flex flex-col items-center gap-4 py-8"
+                  className="flex flex-col items-center gap-3"
                 >
                   <div className="relative bg-white p-2 rounded-2xl shadow-xl rotate-[-2deg]">
                     <img 
                       src={pages[currentPage].image} 
-                      className="w-72 h-72 object-cover rounded-xl" 
+                      className="w-64 h-64 object-cover rounded-xl" 
                       alt={`Page ${currentPage + 1}`} 
                     />
                   </div>
                   
-                  <div className="text-center space-y-4 w-full">
-                    <h2 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-600 filter drop-shadow-sm leading-tight break-words px-2">
+                  <div className="text-center space-y-2 w-full mt-2">
+                    <h2 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-600 filter drop-shadow-sm leading-tight break-words px-1">
                        {pages[currentPage].highlight}
                     </h2>
                     <p className="text-gray-700 text-lg font-medium leading-relaxed font-dancing-script px-2">
@@ -202,28 +201,28 @@ export default function AnniversaryPage() {
               </AnimatePresence>
             </div>
 
-            <div className="w-full p-6 flex justify-between items-center bg-white/80 backdrop-blur-md rounded-t-3xl absolute bottom-0 z-50 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
+            <div className="w-full p-4 flex justify-between items-center bg-white/80 backdrop-blur-md rounded-t-3xl absolute bottom-0 z-50 shadow-[0_-10px_40px_rgba(0,0,0,0.1)]">
               <button 
                 onClick={prevPage} 
                 disabled={currentPage === 0}
                 className={`p-4 rounded-full ${currentPage === 0 ? 'text-gray-300' : 'bg-gray-100 text-pink-500 shadow-md active:scale-95'}`}
               >
-                <ChevronLeft size={28} />
+                <ChevronLeft size={24} />
               </button>
 
               {currentPage === pages.length - 1 ? (
                 <button 
                   onClick={makeCall}
-                  className="px-6 py-4 bg-green-500 text-white rounded-full font-bold shadow-xl animate-pulse flex items-center gap-2 active:scale-95 transition-transform"
+                  className="px-6 py-3 bg-green-500 text-white rounded-full font-bold shadow-xl animate-pulse flex items-center gap-2 active:scale-95 transition-transform"
                 >
-                  <Phone fill="white" size={24} /> Call Me
+                  <Phone fill="white" size={20} /> Call Me
                 </button>
               ) : (
                 <button 
                   onClick={nextPage}
                   className="p-4 bg-pink-500 text-white rounded-full shadow-lg shadow-pink-500/30 hover:bg-pink-600 active:scale-95"
                 >
-                  <ChevronRight size={28} />
+                  <ChevronRight size={24} />
                 </button>
               )}
             </div>
