@@ -119,8 +119,8 @@ export default function AnniversaryPage() {
                   transition={{ repeat: Infinity, duration: 2 }}
                   className="absolute inset-0 bg-pink-500 rounded-full blur-xl"
                 ></motion.div>
-                {/* USE PAGE 1 PHOTO AS PROFILE PIC - Ensure p1.jpg exists */}
-                <img src="/p1.jpg" alt="My Love" className="w-32 h-32 rounded-full border-4 border-gray-800 z-10 relative object-cover" />
+                {/* USE PAGE 1 PHOTO AS PROFILE PIC - Ensure call.jpg exists */}
+                <img src="/call.jpg" alt="My Love" className="w-32 h-32 rounded-full border-4 border-gray-800 z-10 relative object-cover" />
               </div>
               <h1 className="text-4xl font-light tracking-wide text-white">My Pondati ❤️</h1>
               <p className="text-gray-400 mt-3 text-lg">Mobile +91 63832 64697</p>
