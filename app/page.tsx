@@ -46,18 +46,19 @@ const pages = [
     highlight: "En anbaeeeee",
     text: "I Love You En anbaeeeee! 👑 Inimel vara pora ella years-um namaku happy-a irukum. I promise to treat you like a queen. 🏰💖"
   },
+  /* --- SWAPPED & UPDATED SECTION --- */
   {
-    image: "/p9.jpg",
-    highlight: "Anbu manaiviyeee",
-    text: "I Love You Anbu manaiviyeee! 🤝 (Holding Hands) Un viralodu viral korkum bodhu... adhu vera level feel. I never want to let go. ✨👫"
-  },
-  {
-    image: "/p10.jpg",
+    image: "/p10.jpg", // Moved Eyes to Page 9 (Last 3rd)
     highlight: "En thozhiyeeeeee",
-    text: "I Love You En thozhiyeeeeee! 👀 (Your Eyes) Un kannula paathu pesikitte irukkalam... It feels so good to talk to you, baby. Avlo amaidhi, avlo azhagu. ✨😍"
+    text: "I Love You En thozhiyeeeeee! 👀 (Your Eyes) Un kannula paatha... edho amaidhi kidaikkudhu di. Talking to you heals everything. ✨😍"
   },
   {
-    image: "/p11.jpg",
+    image: "/p9.jpg", // Moved Weirdness to Page 10 (Last 2nd)
+    highlight: "Anbu manaiviyeee",
+    text: "I Love You Anbu manaiviyeee! 🤪 (Your Weirdness) Un lollu, un kurumbu... ellame enakku pidikkum. You are my crazy little minion! 💖🥳"
+  },
+  {
+    image: "/p11.jpg", // Lips remains Page 11
     highlight: "En kanaveeeeee",
     text: "I Love You En kanaveeeeee! 💋 (Your Lips) Un lips... paathale kiss panna thonudhu. The taste I crave every single day. Waiting to feel them. 🔥😘"
   }
@@ -187,11 +188,9 @@ export default function AnniversaryPage() {
                   </div>
                   
                   <div className="text-center space-y-4 w-full">
-                    {/* Big Highlighted Name */}
                     <h2 className="text-2xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-600 filter drop-shadow-sm leading-tight break-words px-2">
                        {pages[currentPage].highlight}
                     </h2>
-                    {/* Message with "I Love You [Exact Name]" */}
                     <p className="text-gray-700 text-lg font-medium leading-relaxed font-dancing-script px-2">
                       {pages[currentPage].text}
                     </p>
@@ -234,4 +233,3 @@ export default function AnniversaryPage() {
     </main>
   );
 }
-
