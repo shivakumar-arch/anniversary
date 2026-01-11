@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image"; // IMPORTING THE FAST IMAGE TOOL
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, PhoneOff, Heart, ChevronRight, ChevronLeft } from "lucide-react";
 import confetti from "canvas-confetti";
@@ -123,7 +124,18 @@ export default function AnniversaryPage() {
                   transition={{ repeat: Infinity, duration: 2 }}
                   className="absolute inset-0 bg-pink-500 rounded-full blur-xl"
                 ></motion.div>
-                <img src="/call.jpg" alt="My Love" className="w-32 h-32 rounded-full border-4 border-gray-800 z-10 relative object-cover" />
+                
+                {/* OPTIMIZED CALL IMAGE */}
+                <div className="relative w-32 h-32 z-10">
+                  <Image 
+                    src="/call.jpg" 
+                    alt="My Love" 
+                    fill
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    className="rounded-full border-4 border-gray-800 object-cover"
+                    priority
+                  />
+                </div>
               </div>
               <h1 className="text-4xl font-light tracking-wide text-white">My Pondati ❤️</h1>
               <p className="text-gray-400 mt-3 text-lg">Mobile +91 63832 64697</p>
@@ -178,12 +190,18 @@ export default function AnniversaryPage() {
                   transition={{ duration: 0.3 }}
                   className="flex flex-col items-center gap-3"
                 >
+                  {/* OPTIMIZED SLIDESHOW IMAGE */}
                   <div className="relative bg-white p-2 rounded-2xl shadow-xl rotate-[-2deg]">
-                    <img 
-                      src={pages[currentPage].image} 
-                      className="w-64 h-64 object-cover rounded-xl" 
-                      alt={`Page ${currentPage + 1}`} 
-                    />
+                    <div className="relative w-64 h-64">
+                       <Image 
+                         src={pages[currentPage].image} 
+                         alt={`Page ${currentPage + 1}`} 
+                         fill
+                         sizes="(max-width: 768px) 100vw, 50vw"
+                         className="object-cover rounded-xl"
+                         priority
+                       />
+                    </div>
                   </div>
                   
                   <div className="text-center space-y-2 w-full mt-2">
