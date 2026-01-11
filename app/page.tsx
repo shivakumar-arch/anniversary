@@ -5,99 +5,105 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Phone, PhoneOff, Heart, ChevronRight, ChevronLeft } from "lucide-react";
 import confetti from "canvas-confetti";
 
-// --- YOUR NEW 11 PAGES WITH HIGHLIGHTED NAMES ---
 const pages = [
   {
     image: "/p1.jpg",
     highlight: "Pondatiiiiiiiiiiiii",
-    text: "I love you ❤️"
+    text: "Happy 1 Month Anniversary baby! ❤️ Un kooda irukka ovvoru nimishamum enakku oru gift madhiri."
   },
   {
     image: "/p2.jpg",
     highlight: "Azhagiiiiiiiiiiiiiii",
-    text: "I love you so much!"
+    text: "Ulagathulaye nee dhan di enakku romba azhagu. Looking at you heals my soul instantly. ✨"
   },
   {
     image: "/p3.jpg",
     highlight: "Chellameeeeee",
-    text: "You are my everything."
+    text: "Unna konjum pothu kidaikura sandhosham vera ethulayum illa. You are my cutie pie forever."
   },
   {
     image: "/p4.jpg",
     highlight: "Ammu kuttyyyyyy",
-    text: "My cutest sweetie."
+    text: "Sometimes we fight, aana adhu kooda love dhan. Un mela irukka paasam eppovum korayadhu di."
   },
   {
     image: "/p5.jpg",
     highlight: "Kannadiiiiiiiiiiiiiii",
-    text: "Looking at you is paradise."
+    text: "Ennoda reflecton nee. Nee siricha naanum sirippen, nee azhutha en manasu thudikkum."
   },
   {
     image: "/p6.jpg",
     highlight: "Vairameeeeeee",
-    text: "My precious diamond."
+    text: "You are more precious than diamond to me. Unna pathukradhu dhan en life oda ore aim. 💎"
   },
   {
     image: "/p7.jpg",
     highlight: "En uyireeeeee",
-    text: "You are my life."
+    text: "Nee illama en life-la oru meaning-e illa. You complete me in every single way, baby ma."
   },
   {
     image: "/p8.jpg",
     highlight: "En anbaeeeee",
-    text: "My love forever."
+    text: "Inimel vara pora ella years-um namaku happy-a irukum. I promise to treat you like a queen. 👑"
   },
   {
     image: "/p9.jpg",
-    highlight: "Anbu manaiviyeee",
-    text: "My dear wife."
+    highlight: "Kaikorthu...",
+    text: "Un viralodu viral korkum bodhu... adhu vera level feel. I never want to let go. 🤝✨"
   },
   {
     image: "/p10.jpg",
-    highlight: "En thozhiyeeeeee",
-    text: "My best friend always."
+    highlight: "Andha Kangal...",
+    text: "Un kannu rendum kaandha sakthi di... One look and I'm totally lost. Adhula irukkura bodhai vera level. 😉🔥"
   },
   {
     image: "/p11.jpg",
-    highlight: "En kanaveeeeee",
-    text: "My dream come true. Happy 1 Month! Click below! 👇"
+    highlight: "Andha Udhadu...",
+    text: "Un lips... paathale kiss panna thonudhu. The taste I crave every single day. Waiting to feel them. 💋"
   }
 ];
 
 export default function AnniversaryPage() {
   const [isAnswered, setIsAnswered] = useState(false);
+  const [isDeclined, setIsDeclined] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
 
-  // Call screen setup
+  // Handle Decline (Close Tab / Blank Screen)
+  const handleDecline = () => {
+    setIsDeclined(true);
+    setTimeout(() => {
+      try {
+        window.close(); // Tries to close tab
+      } catch (e) {}
+      window.location.href = "about:blank"; // Fallback to blank page
+    }, 1500);
+  };
+
   const handleAnswer = () => {
     setIsAnswered(true);
     confetti({ particleCount: 50, spread: 70, origin: { y: 0.6 } });
   };
 
-  // Next Slide
   const nextPage = () => {
-    if (currentPage < pages.length - 1) {
-      setCurrentPage(currentPage + 1);
-    }
+    if (currentPage < pages.length - 1) setCurrentPage(currentPage + 1);
   };
 
-  // Previous Slide
   const prevPage = () => {
-    if (currentPage > 0) {
-      setCurrentPage(currentPage - 1);
-    }
+    if (currentPage > 0) setCurrentPage(currentPage - 1);
   };
 
-  // Final Confetti Blast
-  const triggerFinalConfetti = () => {
-    const duration = 3000;
-    const end = Date.now() + duration;
-    (function frame() {
-      confetti({ particleCount: 5, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#ff0000', '#ff69b4'] });
-      confetti({ particleCount: 5, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#ff0000', '#ff69b4'] });
-      if (Date.now() < end) requestAnimationFrame(frame);
-    }());
+  // Handle Call Button Click
+  const makeCall = () => {
+    window.location.href = "tel:9353781514";
   };
+
+  if (isDeclined) {
+    return (
+      <main className="h-screen w-screen bg-black flex items-center justify-center">
+        <h1 className="text-gray-500 text-xl font-light">Call Ended</h1>
+      </main>
+    );
+  }
 
   return (
     <main className="h-screen w-screen bg-black overflow-hidden flex flex-col items-center justify-center font-sans text-white">
@@ -119,20 +125,26 @@ export default function AnniversaryPage() {
                   transition={{ repeat: Infinity, duration: 2 }}
                   className="absolute inset-0 bg-pink-500 rounded-full blur-xl"
                 ></motion.div>
-                {/* USE PAGE 1 PHOTO AS PROFILE PIC - Ensure call.jpg exists */}
                 <img src="/call.jpg" alt="My Love" className="w-32 h-32 rounded-full border-4 border-gray-800 z-10 relative object-cover" />
               </div>
               <h1 className="text-4xl font-light tracking-wide text-white">My Pondati ❤️</h1>
               <p className="text-gray-400 mt-3 text-lg">Mobile +91 63832 64697</p>
               <p className="text-gray-500 text-sm mt-1 animate-pulse">Incoming video call...</p>
             </div>
+            
             <div className="flex w-full justify-around px-12 mb-16">
+              {/* DECLINE BUTTON - CLOSES TAB */}
               <div className="flex flex-col items-center gap-3">
-                <button className="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center shadow-lg shadow-red-500/30">
+                <button 
+                  onClick={handleDecline}
+                  className="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center shadow-lg shadow-red-500/30 active:scale-95 transition-transform"
+                >
                   <PhoneOff fill="white" size={32} />
                 </button>
                 <span className="text-gray-400">Decline</span>
               </div>
+
+              {/* ACCEPT BUTTON */}
               <div className="flex flex-col items-center gap-3">
                 <motion.button
                   whileHover={{ scale: 1.1 }}
@@ -147,24 +159,19 @@ export default function AnniversaryPage() {
             </div>
           </motion.div>
         ) : (
-          /* --- SCREEN 2: 11 PAGES SLIDESHOW --- */
+          /* --- SCREEN 2: SLIDESHOW --- */
           <motion.div
             key="story-screen"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="h-full w-full max-w-md bg-pink-50 flex flex-col items-center relative"
           >
-            {/* Progress Bar */}
             <div className="w-full h-1 bg-gray-200 mt-2 flex">
               {pages.map((_, index) => (
-                <div 
-                  key={index} 
-                  className={`h-full flex-1 transition-all duration-300 ${index <= currentPage ? 'bg-pink-500' : 'bg-transparent'}`}
-                />
+                <div key={index} className={`h-full flex-1 transition-all duration-300 ${index <= currentPage ? 'bg-pink-500' : 'bg-transparent'}`} />
               ))}
             </div>
 
-            {/* Slide Content */}
             <div className="flex-1 flex flex-col items-center justify-center p-6 w-full">
               <AnimatePresence mode="wait">
                 <motion.div
@@ -176,7 +183,6 @@ export default function AnniversaryPage() {
                   className="flex flex-col items-center gap-6"
                 >
                   <div className="relative bg-white p-2 rounded-2xl shadow-xl rotate-[-2deg] mt-4">
-                    {/* Ensure photos p1.jpg to p11.jpg are in public folder */}
                     <img 
                       src={pages[currentPage].image} 
                       className="w-72 h-72 object-cover rounded-xl" 
@@ -185,15 +191,13 @@ export default function AnniversaryPage() {
                   </div>
                   
                   <div className="text-center space-y-3 mt-4 px-2">
-                    {/* BIG HIGHLIGHTED NAME */}
                     <h2 className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-red-600 filter drop-shadow-sm leading-tight break-words">
                        {pages[currentPage].highlight}
                     </h2>
-                    {/* I Love You Text */}
-                    <p className="text-gray-700 text-2xl font-dancing-script">
+                    <p className="text-gray-700 text-lg font-medium leading-relaxed font-dancing-script">
                       {pages[currentPage].text}
                     </p>
-                    <p className="text-pink-400 text-sm font-semibold">
+                    <p className="text-pink-400 text-xs font-semibold mt-4">
                       Page {currentPage + 1}/11
                     </p>
                   </div>
@@ -201,7 +205,6 @@ export default function AnniversaryPage() {
               </AnimatePresence>
             </div>
 
-            {/* Navigation Buttons */}
             <div className="w-full p-6 flex justify-between items-center bg-white/60 backdrop-blur-md rounded-t-3xl absolute bottom-0">
               <button 
                 onClick={prevPage} 
@@ -212,11 +215,12 @@ export default function AnniversaryPage() {
               </button>
 
               {currentPage === pages.length - 1 ? (
+                /* CALL BUTTON ON LAST PAGE */
                 <button 
-                  onClick={triggerFinalConfetti}
-                  className="px-8 py-4 bg-gradient-to-r from-pink-500 to-red-500 text-white rounded-full font-bold shadow-xl animate-pulse flex items-center gap-2 active:scale-95 transition-transform"
+                  onClick={makeCall}
+                  className="px-8 py-4 bg-green-500 text-white rounded-full font-bold shadow-xl animate-pulse flex items-center gap-2 active:scale-95 transition-transform"
                 >
-                  <Heart fill="white" size={24} /> Love You Forever
+                  <Phone fill="white" size={24} /> Call Me Now
                 </button>
               ) : (
                 <button 
